@@ -7,7 +7,9 @@ package model.picture;
 
 import java.awt.Graphics2D;
 import model.ShapeColor;
+import model.ShapeType;
 import model.interfaces.Shape;
+import model.interfaces.UserChoices;
 
 /**
  * @see model.interfaces.Shape
@@ -17,11 +19,14 @@ public class ShapeImpl implements Shape {
   private Point start;
   private Point end;
   private ShapeColor color;
+  private ShapeType type;
 
-  public ShapeImpl(Point start, Point end, ShapeColor color) {
+  public ShapeImpl(Point start, Point end, ShapeColor color, ShapeType type) {
     normalizePoints(start, end);
     this.color = color;
+    this.type = type;
   }
+
 
   public Point getStart() {
     return start;
@@ -33,15 +38,17 @@ public class ShapeImpl implements Shape {
 
   @Override
   public void draw(Graphics2D graphics) {
-    graphics.setColor(color.value);
-    graphics.fillRect(start.getX(), start.getY(), getWidth(), getHeight());
+    ShapeDecorator decorator = new ShapeDecorator(this, color, type);
+    decorator.draw(graphics);
+    //graphics.setColor(color.value);
+    //graphics.fillRect(start.getX(), start.getY(), getWidth(), getHeight());
   }
 
-  private int getWidth() {
+  public int getWidth() {
     return end.getX() - start.getX();
   }
 
-  private int getHeight() {
+  public int getHeight() {
     return end.getY() - start.getY();
   }
 
