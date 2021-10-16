@@ -7,6 +7,7 @@ package model.picture;
 
 import java.awt.Graphics2D;
 import model.ShapeColor;
+import model.ShapeShadingType;
 import model.ShapeType;
 import model.interfaces.Shape;
 import model.interfaces.UserChoices;
@@ -20,13 +21,26 @@ public class ShapeImpl implements Shape {
   private Point end;
   private ShapeColor color;
   private ShapeType type;
+  private ShapeShadingType shadingType;
 
-  public ShapeImpl(Point start, Point end, ShapeColor color, ShapeType type) {
+  public ShapeImpl(Point start, Point end, ShapeColor color, ShapeType type, ShapeShadingType shadingType) {
     normalizePoints(start, end);
     this.color = color;
     this.type = type;
+    this.shadingType = shadingType;
   }
 
+  public ShapeColor getColor() {
+    return color;
+  }
+
+  public ShapeType getType() {
+    return type;
+  }
+
+  public ShapeShadingType getShadingType() {
+    return shadingType;
+  }
 
   public Point getStart() {
     return start;
@@ -38,10 +52,8 @@ public class ShapeImpl implements Shape {
 
   @Override
   public void draw(Graphics2D graphics) {
-    ShapeDecorator decorator = new ShapeDecorator(this, color, type);
+    ShapeDecorator decorator = new ShapeDecorator(this, color, type, shadingType);
     decorator.draw(graphics);
-    //graphics.setColor(color.value);
-    //graphics.fillRect(start.getX(), start.getY(), getWidth(), getHeight());
   }
 
   public int getWidth() {
@@ -51,6 +63,8 @@ public class ShapeImpl implements Shape {
   public int getHeight() {
     return end.getY() - start.getY();
   }
+
+
 
   /**
    * The beginning and ending points are not necessarily the points needed when drawing.

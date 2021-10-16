@@ -1,11 +1,14 @@
 package model.picture;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import model.ShapeColor;
+import model.ShapeShadingType;
 import model.interfaces.Shape;
 
 public class RectangleDecorator implements Shape {
 
+  private ShapeShadingType shadingType;
   private ShapeColor color;
   private int startX;
   private int startY;
@@ -18,11 +21,28 @@ public class RectangleDecorator implements Shape {
     this.startY = shapeDecorator.getStartY();
     this.width = shapeDecorator.getWidth();
     this.height = shapeDecorator.getHeight();
+    this.shadingType = shapeDecorator.getShadingType();
   }
 
   @Override
   public void draw(Graphics2D graphics) {
     graphics.setColor(color.value);
-    graphics.fillRect(startX, startY, width, height);
+    switch (shadingType){
+      case FILLED_IN:
+        graphics.fillRect(startX, startY, width, height);
+        break;
+      case OUTLINE:
+        graphics.drawRect(startX, startY, width, height);
+        break;
+      case OUTLINE_AND_FILLED_IN:
+        graphics.fillRect(startX, startY, width, height);
+        graphics.setColor(Color.red);
+        graphics.drawRect(startX, startY, width, height);
+        break;
+      default:
+        graphics.fillRect(startX, startY, width, height);
+        break;
+    }
+
   }
 }

@@ -3,6 +3,7 @@ package model.picture;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import model.ShapeColor;
+import model.ShapeShadingType;
 import model.ShapeType;
 import model.interfaces.Shape;
 
@@ -17,9 +18,11 @@ public class ShapeDecorator implements Shape {
   private int height;
   private int[] xCoord;
   private int[] yCoord;
-  Shape decorator;
+  private ShapeShadingType shadingType;
+  private Shape decorator;
 
-  public ShapeDecorator(ShapeImpl shape, ShapeColor color, ShapeType type){
+  public ShapeDecorator(ShapeImpl shape, ShapeColor color, ShapeType type, ShapeShadingType shadingType){
+    this.shadingType = shadingType;
     this.shape = shape;
     this.color = color;
     this.shapeType = type;
@@ -27,21 +30,18 @@ public class ShapeDecorator implements Shape {
     this.startY = shape.getStart().getY();
     this.width = shape.getWidth();
     this.height = shape.getHeight();
-    this.xCoord = new int[]{shape.getStart().getX(), shape.getEnd().getX(), shape.getEnd().getX()};
-    this.yCoord = new int[]{shape.getStart().getY(), shape.getStart().getY(), shape.getEnd().getY()};
+    this.xCoord = new int[]{shape.getStart().getX(), ((shape.getEnd().getX() + shape.getStart().getX()) / 2), shape.getEnd().getX()};
+    this.yCoord = new int[]{shape.getEnd().getY(), shape.getStart().getY(), shape.getEnd().getY()};
     determineShape();
   }
 
   @Override
   public void draw(Graphics2D graphics) {
-    System.out.println("In ShapeDecorator draw method and shape is " + shapeType+
-        " and the color is " + color);
     decorator.draw(graphics);
-    //graphics.setColor(color.value);
-    //graphics.fillRect(startX, startY, width, height);
   }
 
   public ShapeColor getColor(){return color;}
+  public ShapeShadingType getShadingType(){return shadingType;}
   public int getStartX(){ return startX;}
   public int getStartY(){ return startY;}
   public int getWidth(){return width;}

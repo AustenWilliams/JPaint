@@ -49,7 +49,7 @@ public class CreateShapeCommand implements Command, Undoable {
 
   @Override
   public void run() {
-    shape = new ShapeImpl(start, end, userChoices.getActivePrimaryColor(), userChoices.getActiveShapeType());
+    shape = new ShapeImpl(start, end, userChoices.getActivePrimaryColor(), userChoices.getActiveShapeType(), userChoices.getActiveShapeShadingType());
     picture.add(shape);
   }
 }

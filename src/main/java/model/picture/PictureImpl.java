@@ -35,6 +35,10 @@ public class PictureImpl implements Picture {
     }
   }
 
+  public List<Shape> getElements(){
+    return elements;
+  }
+
   public int size() {
     return elements.size();
   }
