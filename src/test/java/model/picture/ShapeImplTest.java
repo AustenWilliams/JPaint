@@ -11,7 +11,7 @@ public class ShapeImplTest {
   void testUpperLeftToLowerRight() {
     Point start = new Point(1,1);
     Point end = new Point(2, 2);
-    ShapeImpl s = new ShapeImpl(start, end, null, null);
+    ShapeImpl s = new ShapeImpl(start, end, null, null, null);
     assertEquals(start, s.getStart());
   }
 
@@ -20,7 +20,7 @@ public class ShapeImplTest {
   void testLowerRightToUpperLeft() {
     Point start = new Point(1,1);
     Point end = new Point(0, 0);
-    ShapeImpl s = new ShapeImpl(start, end, null, null);
+    ShapeImpl s = new ShapeImpl(start, end, null, null, null);
     assertEquals(end, s.getStart());
   }
 
@@ -29,7 +29,7 @@ public class ShapeImplTest {
   void testUpperRightToLowerLeft() {
     Point start = new Point(1,1);
     Point end = new Point(0, 2);
-    ShapeImpl s = new ShapeImpl(start, end, null, null);
+    ShapeImpl s = new ShapeImpl(start, end, null, null, null);
     assertEquals(new Point(0, 1), s.getStart());
   }
 
@@ -38,7 +38,7 @@ public class ShapeImplTest {
   void testLowerLeftToUpperRight() {
     Point start = new Point(1,1);
     Point end = new Point(2, 0);
-    ShapeImpl s = new ShapeImpl(start, end, null, null);
+    ShapeImpl s = new ShapeImpl(start, end, null, null, null);
     assertEquals(new Point(1, 0), s.getStart());
   }
 }
