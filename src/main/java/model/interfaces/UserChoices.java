@@ -1,3 +1,8 @@
+/*
+ * Assignment: 1
+ * Topic: JPaint
+ * Author: Jeffrey Sharpe, Dan Walker
+ */
 package model.interfaces;
 
 import model.ShapeColor;

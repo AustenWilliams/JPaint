@@ -5,15 +5,16 @@
  */
 package main;
 
+import controller.Clipboard;
 import controller.interfaces.EventConnector;
 import controller.EventConnectorImpl;
 import controller.KeyboardInterface;
 import controller.MouseHandler;
 import controller.command.CommandController;
-import model.interfaces.Picture;
+import view.interfaces.Picture;
 import model.interfaces.UserChoices;
 import model.persistence.UserChoicesImpl;
-import model.picture.PictureImpl;
+import view.picture.PictureImpl;
 import view.gui.Gui;
 import view.gui.GuiWindowImpl;
 import view.gui.PaintCanvas;
@@ -31,14 +32,14 @@ public class Main {
         GuiWindow guiWindow = new GuiWindowImpl(paintCanvas);
         UiModule uiModule = new Gui(guiWindow);
         UserChoices userChoices = new UserChoicesImpl(uiModule);
-        CommandController commandControl = new CommandController(paintCanvas, userChoices, picture);
+        Clipboard clipboard = new Clipboard(picture, paintCanvas);
+        CommandController commandControl = new CommandController(paintCanvas, userChoices, picture, clipboard);
         EventConnector controller = new EventConnectorImpl(uiModule, userChoices, commandControl);
 
         KeyboardInterface keys = new KeyboardInterface(paintCanvas, userChoices);
         keys.setup();
 
-        CommandController c = new CommandController(paintCanvas, userChoices, picture);
-        MouseHandler mouse = new MouseHandler(c);
+        MouseHandler mouse = new MouseHandler(commandControl);
         paintCanvas.addMouseListener(mouse);
         controller.setup();
     }
