@@ -1,7 +1,7 @@
 /*
  * Assignment: 1
  * Topic: JPaint
- * Author: Dan Walker
+ * Author: Austen Williams
  */
 package view.interfaces;
 
