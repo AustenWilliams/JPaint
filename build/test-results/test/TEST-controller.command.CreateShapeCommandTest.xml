@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="controller.command.CreateShapeCommandTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-10-19T15:39:53" hostname="Austens-MacBook-Pro.local" time="0.181">
-  <properties/>
-  <testcase name="Executing undo should remove from the picture" classname="controller.command.CreateShapeCommandTest" time="0.162"/>
-  <testcase name="Executing redo should return the element to the Picture" classname="controller.command.CreateShapeCommandTest" time="0.001"/>
-  <testcase name="Running CreateShapeCommand should add an element to the picture" classname="controller.command.CreateShapeCommandTest" time="0.014"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
