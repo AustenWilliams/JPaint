@@ -5,14 +5,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class ShapeImplTest {
+public class RegionImplTest {
   @Test
   @DisplayName("A drag from upper left to lower right should leave start point unchanged")
   void testUpperLeftToLowerRight() {
     Point start = new Point(1,1);
     Point end = new Point(2, 2);
-    ShapeImpl s = new ShapeImpl(start, end, null, null);
-    assertEquals(start, s.getStart());
+    RegionImpl r = new RegionImpl(start, end);
+    assertEquals(start, r.start());
   }
 
   @Test
@@ -20,8 +20,8 @@ public class ShapeImplTest {
   void testLowerRightToUpperLeft() {
     Point start = new Point(1,1);
     Point end = new Point(0, 0);
-    ShapeImpl s = new ShapeImpl(start, end, null, null);
-    assertEquals(end, s.getStart());
+    RegionImpl r = new RegionImpl(start, end);
+    assertEquals(end, r.start());
   }
 
   @Test
@@ -29,16 +29,21 @@ public class ShapeImplTest {
   void testUpperRightToLowerLeft() {
     Point start = new Point(1,1);
     Point end = new Point(0, 2);
-    ShapeImpl s = new ShapeImpl(start, end, null, null);
-    assertEquals(new Point(0, 1), s.getStart());
+    RegionImpl region = new RegionImpl(start, end);
+    assertEquals(new Point(0, 1), region.start());
   }
 
   @Test
   @DisplayName("A drag from upper right to lower left should swap end for start")
   void testLowerLeftToUpperRight() {
-    Point start = new Point(1,1);
-    Point end = new Point(2, 0);
-    ShapeImpl s = new ShapeImpl(start, end, null, null);
-    assertEquals(new Point(1, 0), s.getStart());
+    RegionImpl region = makeRegion(1,1, 2, 0);
+    assertEquals(new Point(1, 0), region.start());
+  }
+
+  private RegionImpl makeRegion(int x1, int y1, int x2, int y2) {
+    Point start = new Point(x1,y1);
+    Point end = new Point(x2, y2);
+    return new RegionImpl(start, end);
   }
 }
+

@@ -1,7 +1,7 @@
 /*
  * Assignment: 1
  * Topic: JPaint
- * Author: Jeffrey Sharpe, Dan Walker
+ * Author: Austen Williams
  */
 package controller;
 
@@ -39,5 +39,8 @@ public class EventConnectorImpl implements EventConnector {
 
         uiModule.addEvent(EventName.UNDO, commandController::onUndo);
         uiModule.addEvent(EventName.REDO, commandController::onRedo);
+        uiModule.addEvent(EventName.COPY, commandController::onCopy);
+        uiModule.addEvent(EventName.PASTE, commandController::onPaste);
+        uiModule.addEvent(EventName.DELETE, commandController::onDelete);
     }
 }

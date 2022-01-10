@@ -1,7 +1,7 @@
 /*
  * Assignment: 1
  * Topic: JPaint
- * Author: Jeffrey Sharpe
+ * Author: Austen Williams
  */
 package view;
 

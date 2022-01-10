@@ -1,14 +1,14 @@
 /*
  * Assignment: 1
  * Topic: JPaint
- * Author: Jeffrey Sharpe, Dan Walker
+ * Author: Austen Williams
  */
 package view.gui;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JComponent;
-import model.interfaces.Picture;
+import view.interfaces.Picture;
 
 /**
  * PaintCanvas is responsible for responding to the graphics system when it
@@ -25,9 +25,9 @@ public class PaintCanvas extends JComponent {
 
     @Override
     /**
-     * This is an event handler.  If this function gets called, its time to
+     * This is an event handler.  If this function gets called, it's time to
      * draw the entire picture.
-     * It you want to force a paint event, call aPaintCanvas.repaint()
+     * If you want to force a paint event, call aPaintCanvas.repaint()
      */
     public void paintComponent(Graphics g) {
         Graphics2D graphics2d = (Graphics2D) g;
